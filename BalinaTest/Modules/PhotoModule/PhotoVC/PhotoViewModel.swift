@@ -9,24 +9,24 @@ import Foundation
 import UIKit
 
 final class PhotoViewModel: PhotoViewModelProtocol {
-
+  
   //MARK: - Properties
-
+  
   var networkService: NetworkServiceProtocol
   var model: [Content] = []
   var isLoading: Bool = false
   var currentPage: Int = 0
   var errorHandler: ((String) -> Void)?
   var loadingCellIndexPath: IndexPath?
-
+  
   //MARK: - Init
-
+  
   init(networkService: NetworkServiceProtocol) {
     self.networkService = networkService
   }
   
   //MARK: - Fetch photo data
-
+  
   func fetchPhotoData(completion: @escaping ((Bool, Bool) -> Void)) {
     networkService.getPhotoTypes(currentPage: "\(currentPage)") { result in
       switch result {
@@ -44,7 +44,7 @@ final class PhotoViewModel: PhotoViewModelProtocol {
       }
     }
   }
-
+  
   func refreshPhotoData(completion: @escaping () -> Void) {
     self.currentPage = 0
     networkService.getPhotoTypes(currentPage: "\(currentPage)") { result in
@@ -59,9 +59,9 @@ final class PhotoViewModel: PhotoViewModelProtocol {
       }
     }
   }
-
+  
   //MARK: - Send data
-
+  
   func sendData(contentModel: ImagePostRequest, completion: @escaping (String, Bool) -> Void) {
     networkService.postRequest(contentModel: contentModel) { id, success  in
       if success {
@@ -71,9 +71,9 @@ final class PhotoViewModel: PhotoViewModelProtocol {
       }
     }
   }
-
+  
   //MARK: - Errors
-
+  
   func handleAPIError(_ error: Error) {
     if let apiError = error as? APIError {
       switch apiError {
@@ -86,5 +86,5 @@ final class PhotoViewModel: PhotoViewModelProtocol {
       errorHandler?(error.localizedDescription)
     }
   }
-
+  
 }

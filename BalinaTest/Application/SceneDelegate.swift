@@ -15,9 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
     guard let windowScene = (scene as? UIWindowScene) else { return }
     self.window = UIWindow(windowScene: windowScene)
-    let networkService = NetworkService()
-    let viewModel = PhotoViewModel(networkService: networkService)
-    window?.rootViewController = PhotoViewController(viewModel: viewModel)
+    window?.rootViewController = Builder.createPhotoVCModule()
     window?.makeKeyAndVisible()
   }
 

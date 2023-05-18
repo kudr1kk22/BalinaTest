@@ -25,7 +25,7 @@ final class PhotoViewController: UIViewController {
     activityIndicator.translatesAutoresizingMaskIntoConstraints = false
     return activityIndicator
   }()
-
+  
   
   //MARK: - Init
   
@@ -76,12 +76,12 @@ final class PhotoViewController: UIViewController {
       }
     }
   }
-
+  
   func loadMoreData() {
     if !self.viewModel.isLoading {
       self.viewModel.isLoading = true
       self.viewModel.currentPage += 1
-
+      
       viewModel.fetchPhotoData { success, isEmpty in
         DispatchQueue.main.async {
           self.viewModel.isLoading = false
@@ -122,7 +122,7 @@ extension PhotoViewController: UITableViewDataSource {
     default: return 0
     }
   }
-
+  
   func numberOfSections(in tableView: UITableView) -> Int {
     return 2
   }
@@ -131,7 +131,7 @@ extension PhotoViewController: UITableViewDataSource {
     if indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PhotoTableViewCell.self), for: indexPath) as? PhotoTableViewCell
       let content = viewModel.model[indexPath.row]
-
+      
       cell?.configure(model: content)
       return cell ?? UITableViewCell()
     } else {
@@ -146,13 +146,13 @@ extension PhotoViewController: UITableViewDataSource {
 //MARK: - UITableViewDelegate
 
 extension PhotoViewController: UITableViewDelegate {
-
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: false)
     let id = viewModel.model[indexPath.row].id
     showPhotoPicker(id: id)
   }
-
+  
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     if indexPath.row == viewModel.model.count - 1, !viewModel.isLoading {
       loadMoreData()
@@ -163,7 +163,7 @@ extension PhotoViewController: UITableViewDelegate {
 //MARK: - Constraints
 
 private extension PhotoViewController {
-
+  
   func setConstraints() {
     NSLayoutConstraint.activate([
       tableView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -171,9 +171,9 @@ private extension PhotoViewController {
       tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
     ])
-
+    
     view.addSubview(activityIndicator)
-
+    
     NSLayoutConstraint.activate([
       activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
@@ -196,7 +196,7 @@ private extension PhotoViewController {
     DispatchQueue.main.async {
       let alert = UIAlertController(title: "Успех", message: "ID: \(messageId)", preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "Окей", style: .default, handler: nil))
-
+      
       self.present(alert, animated: true, completion: nil)
     }
   }
@@ -207,7 +207,7 @@ private extension PhotoViewController {
     DispatchQueue.main.async {
       let alert = UIAlertController(title: "Ошибка", message: errorMessage, preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: "Окей", style: .default, handler: nil))
-
+      
       self.present(alert, animated: true, completion: nil)
     }
   }
@@ -217,12 +217,12 @@ private extension PhotoViewController {
   func showPhotoAlert(image: UIImage, id: Int) {
     let name = "Eugene Kudritsky"
     let alertController = UIAlertController(title: name, message: "id: \(id)", preferredStyle: .alert)
-
+    
     let image = image
     let imageView = UIImageView(image: image)
     imageView.frame = CGRect(x: 10, y: 10, width: 50, height: 50)
     alertController.view.addSubview(imageView)
-
+    
     let sendAction = UIAlertAction(title: "Send", style: .default) { _ in
       if let data = image.jpegData(compressionQuality: 0.8) {
         let model = ImagePostRequest(name: name, photo: data, typeId: id)
@@ -234,14 +234,14 @@ private extension PhotoViewController {
           self.displaySuccess(messageId: id)
         }
       }
-
+      
     }
     let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
     alertController.addAction(sendAction)
     alertController.addAction(cancelAction)
-
+    
     present(alertController, animated: true, completion: nil)
-
+    
   }
 }
 //MARK: - UIImagePickerControllerDelegate
@@ -264,9 +264,9 @@ extension PhotoViewController {
   func hideSpiner() {
     if let indexPath = viewModel.loadingCellIndexPath {
       if let cell = tableView.cellForRow(at: indexPath) as? LoadingCell {
-           cell.activityIndicator.stopAnimating()
-        }
-     }
+        cell.activityIndicator.stopAnimating()
+      }
+    }
   }
 }
 

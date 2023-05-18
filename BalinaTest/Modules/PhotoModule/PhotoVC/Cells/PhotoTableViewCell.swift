@@ -66,6 +66,5 @@ extension PhotoTableViewCell {
       image.heightAnchor.constraint(equalTo: contentView.heightAnchor),
       image.widthAnchor.constraint(equalTo: image.heightAnchor)
     ])
-
   }
 }

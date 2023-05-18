@@ -15,6 +15,8 @@
 		D933906E2A13A845004A2628 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D933906C2A13A845004A2628 /* LaunchScreen.storyboard */; };
 		D93390762A13A9BC004A2628 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93390752A13A9BC004A2628 /* NetworkService.swift */; };
 		D94D4AF82A13EC1400D4C5B1 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94D4AF72A13EC1400D4C5B1 /* LoadingCell.swift */; };
+		D96B01772A163E180082F834 /* Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96B01762A163E180082F834 /* Builder.swift */; };
+		D96B01792A163E220082F834 /* BuilderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96B01782A163E220082F834 /* BuilderProtocol.swift */; };
 		D9838FC82A151DB400FFE057 /* PhotoPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9838FC72A151DB400FFE057 /* PhotoPickerManager.swift */; };
 		D9838FEA2A153E0B00FFE057 /* ImagePostRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9838FE92A153E0B00FFE057 /* ImagePostRequest.swift */; };
 		D9A7A7AD2A13B19B00CD3170 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A7A7AC2A13B19B00CD3170 /* EndPointType.swift */; };
@@ -37,6 +39,8 @@
 		D933906F2A13A845004A2628 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D93390752A13A9BC004A2628 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D94D4AF72A13EC1400D4C5B1 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		D96B01762A163E180082F834 /* Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Builder.swift; sourceTree = "<group>"; };
+		D96B01782A163E220082F834 /* BuilderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuilderProtocol.swift; sourceTree = "<group>"; };
 		D9838FC72A151DB400FFE057 /* PhotoPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPickerManager.swift; sourceTree = "<group>"; };
 		D9838FE92A153E0B00FFE057 /* ImagePostRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostRequest.swift; sourceTree = "<group>"; };
 		D9A7A7AC2A13B19B00CD3170 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 		D93390772A13A9C5004A2628 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				D96B01752A163DF50082F834 /* ModelBuider */,
 				D933906A2A13A845004A2628 /* Assets.xcassets */,
 				D933906C2A13A845004A2628 /* LaunchScreen.storyboard */,
 				D93390612A13A843004A2628 /* AppDelegate.swift */,
@@ -144,6 +149,16 @@
 				D9C29B352A13C37C00B1E8C5 /* PhotoTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		D96B01752A163DF50082F834 /* ModelBuider */ = {
+			isa = PBXGroup;
+			children = (
+				D96B01762A163E180082F834 /* Builder.swift */,
+				D96B01782A163E220082F834 /* BuilderProtocol.swift */,
+			);
+			name = ModelBuider;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		D9A7A7B02A13B24500CD3170 /* Models */ = {
@@ -304,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D96B01792A163E220082F834 /* BuilderProtocol.swift in Sources */,
 				D9C29B362A13C37C00B1E8C5 /* PhotoTableViewCell.swift in Sources */,
 				D9838FEA2A153E0B00FFE057 /* ImagePostRequest.swift in Sources */,
 				D93390662A13A843004A2628 /* PhotoViewController.swift in Sources */,
@@ -313,6 +329,7 @@
 				D93390762A13A9BC004A2628 /* NetworkService.swift in Sources */,
 				D9838FC82A151DB400FFE057 /* PhotoPickerManager.swift in Sources */,
 				D9A7A7AD2A13B19B00CD3170 /* EndPointType.swift in Sources */,
+				D96B01772A163E180082F834 /* Builder.swift in Sources */,
 				D9A7A7B92A13B54000CD3170 /* NetworkServiceProtocol.swift in Sources */,
 				D9A7A7AF2A13B20900CD3170 /* PageModel.swift in Sources */,
 				D93390642A13A843004A2628 /* SceneDelegate.swift in Sources */,
